@@ -19,7 +19,6 @@ void initialize_server(int *server_socket, struct sockaddr_in *server_addr) {
     server_addr->sin_addr.s_addr = INADDR_ANY;
     server_addr->sin_port = htons(PORT);
 
-    // Bind the socket
     if (bind(*server_socket, (struct sockaddr *)server_addr, sizeof(*server_addr)) == -1) {
         perror("Bind failed");
         close(*server_socket);
