@@ -51,7 +51,6 @@ void handle_new_connection(int server_socket, int client_sockets[], fd_set *read
     send(new_socket, WELCOME_MESSAGE, strlen(WELCOME_MESSAGE), 0);
     printf("Welcome message sent to client.\n");
 
-    // Add new socket to the client sockets array
     for (int i = 0; i < MAX_CLIENTS; i++) {
         if (client_sockets[i] == 0) {
             client_sockets[i] = new_socket;
@@ -68,7 +67,7 @@ void handle_client_activity(int client_sockets[], fd_set *readfds) {
     for (int i = 0; i < MAX_CLIENTS; i++) {
         sd = client_sockets[i];
         if (FD_ISSET(sd, readfds)) {
-            // Check if it was a disconnect
+
             int valread = read(sd, buffer, BUFFER_SIZE);
             if (valread == 0) {
                 printf("Client disconnected: socket fd %d\n", sd);
