@@ -8,7 +8,7 @@
 #include "server.h"
 
 void initialize_server(int *server_socket, struct sockaddr_in *server_addr) {
-    // Create server socket
+
     if ((*server_socket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
         perror("Socket creation failed");
         exit(EXIT_FAILURE);
