@@ -14,7 +14,7 @@ void initialize_server(int *server_socket, struct sockaddr_in *server_addr) {
         exit(EXIT_FAILURE);
     }
 
-    // Configure server address
+
     server_addr->sin_family = AF_INET;
     server_addr->sin_addr.s_addr = INADDR_ANY;
     server_addr->sin_port = htons(PORT);
