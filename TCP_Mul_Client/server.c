@@ -47,7 +47,7 @@ void handle_new_connection(int server_socket, int client_sockets[], fd_set *read
     printf("New connection: socket fd %d, ip %s, port %d\n",
            new_socket, inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
 
-    // Send welcome message
+
     send(new_socket, WELCOME_MESSAGE, strlen(WELCOME_MESSAGE), 0);
     printf("Welcome message sent to client.\n");
 
