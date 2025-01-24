@@ -25,7 +25,7 @@ void initialize_server(int *server_socket, struct sockaddr_in *server_addr) {
         exit(EXIT_FAILURE);
     }
 
-    // Listen for connections
+
     if (listen(*server_socket, 3) == -1) {
         perror("Listen failed");
         close(*server_socket);
