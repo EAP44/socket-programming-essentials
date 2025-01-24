@@ -74,7 +74,6 @@ void handle_client_activity(int client_sockets[], fd_set *readfds) {
                 close(sd);
                 client_sockets[i] = 0;
             } else {
-                // Echo back the message
                 buffer[valread] = '\0';
                 printf("Client: %s\n", buffer);
                 send(sd, buffer, strlen(buffer), 0);
