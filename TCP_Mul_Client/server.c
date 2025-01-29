@@ -17,7 +17,7 @@ void initialize_server(int *server_socket, struct sockaddr_in *server_addr) {
 
     server_addr->sin_family = AF_INET;
     server_addr->sin_addr.s_addr = INADDR_ANY;
-    server_addr->sin_port = htons(PORT);
+    server_addr->sin_port = htons(3000);
 
     if (bind(*server_socket, (struct sockaddr *)server_addr, sizeof(*server_addr)) == -1) {
         perror("Bind failed");
