@@ -4,16 +4,13 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 
-#define PORT 8080
-#define BUFFER_SIZE 1024
 
 int main() {
-    int client_socket;
-    struct sockaddr_in server_addr;
+    int cs;
+    struct sockaddr_in sa;
     char *message = "Hello from the Linux TCP Client!";
-    char buffer[BUFFER_SIZE] = {0};
+    char msg[1024] = {0};
 
-    // Create a socket
     if ((client_socket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
         perror("Socket creation failed");
         exit(EXIT_FAILURE);
@@ -21,7 +18,7 @@ int main() {
 
     // Configure server address
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(PORT);
+    server_addr.sin_port = htons(3000);
     if (inet_pton(AF_INET, "127.0.0.1", &server_addr.sin_addr) <= 0) {
         perror("Invalid address or Address not supported");
         close(client_socket);
