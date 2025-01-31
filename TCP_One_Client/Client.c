@@ -13,30 +13,30 @@ int main() {
 
     if ((client_socket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
         perror("Socket creation failed");
-        exit(EXIT_FAILURE);
+        exit();
     }
 
     // Configure server address
-    server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(3000);
-    if (inet_pton(AF_INET, "127.0.0.1", &server_addr.sin_addr) <= 0) {
+    sa.sin_family = AF_INET;
+    sa.sin_port = htons(3000);
+    if (inet_pton(AF_INET, "127.0.0.1", &sa.sin_addr) <= 0) {
         perror("Invalid address or Address not supported");
         close(client_socket);
-        exit(EXIT_FAILURE);
+        exit();
     }
 
     // Connect to the server
-    if (connect(client_socket, (struct sockaddr *)&server_addr, sizeof(server_addr)) == -1) {
+    if (connect(cs, (struct sockaddr *)&sa, sizeof(sa)) == -1) {
         perror("Connection failed");
-        close(client_socket);
-        exit(EXIT_FAILURE);
+        close(cs);
+        exit();
     }
 
     // Send a message to the server
     if (send(client_socket, message, strlen(message), 0) == -1) {
         perror("Send failed");
         close(client_socket);
-        exit(EXIT_FAILURE);
+        exit();
     }
     printf("Message sent to server.\n");
 
