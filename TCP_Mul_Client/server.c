@@ -29,7 +29,7 @@ void initialize_server(int *server_socket, struct sockaddr_in *server_addr) {
     if (listen(*server_socket, 3) == -1) {
         perror("Listen failed");
         close(*server_socket);
-        exit(EXIT_FAILURE);
+        exit();
     }
 
     printf("Server listening on port %d...\n", PORT);
@@ -41,7 +41,7 @@ void handle_new_connection(int server_socket, int client_sockets[], fd_set *read
 
     if ((new_socket = accept(server_socket, (struct sockaddr *)client_addr, &addr_len)) < 0) {
         perror("Accept failed");
-        exit(EXIT_FAILURE);
+        exit();
     }
 
     printf("New connection: socket fd %d, ip %s, port %d\n",
