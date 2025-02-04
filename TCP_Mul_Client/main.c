@@ -11,7 +11,6 @@ int main() {
     int client_sockets[MAX_CLIENTS] = {0};
     fd_set readfds;
 
-    // Initialize server
     initialize_server(&server_socket, &server_addr);
 
     while (1) {
