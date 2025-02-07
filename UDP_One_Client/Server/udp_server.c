@@ -38,7 +38,7 @@ int main() {
             perror("Receive failed");
             continue;
         }
-        buffer[n] = '\0'; // Null-terminate the received data
+        buffer[n] = '\0'; 
         printf("Client: %s\n", buffer);
 
         sendto(server_socket, RESPONSE_MESSAGE, strlen(RESPONSE_MESSAGE), 0, (struct sockaddr *)&client_addr, addr_len);
