@@ -33,7 +33,6 @@ int main() {
     printf("UDP Server listening on port %d...\n", PORT);
 
     while (1) {
-        // Receive data from client
         int n = recvfrom(server_socket, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&client_addr, &addr_len);
         if (n < 0) {
             perror("Receive failed");
