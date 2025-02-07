@@ -24,7 +24,6 @@ int main() {
     server_addr.sin_addr.s_addr = INADDR_ANY;
     server_addr.sin_port = htons(PORT);
 
-    // Bind the socket to the port
     if (bind(server_socket, (const struct sockaddr *)&server_addr, sizeof(server_addr)) == -1) {
         perror("Bind failed");
         close(server_socket);
