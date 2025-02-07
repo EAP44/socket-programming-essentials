@@ -41,7 +41,6 @@ int main() {
         buffer[n] = '\0'; // Null-terminate the received data
         printf("Client: %s\n", buffer);
 
-        // Send response to client
         sendto(server_socket, RESPONSE_MESSAGE, strlen(RESPONSE_MESSAGE), 0, (struct sockaddr *)&client_addr, addr_len);
         printf("Response sent to client.\n");
     }
