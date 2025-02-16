@@ -1,8 +1,8 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#define PORT 8080
-#define BUFFER_SIZE 1024
+#define PORT 8800
+#define BUFFER_SIZE 2048
 #define MAX_CLIENTS 30
 #define WELCOME_MESSAGE "Welcome to the TCP Server!"
 
