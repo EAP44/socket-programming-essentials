@@ -32,7 +32,7 @@ void initialize_server(int *server_socket, struct sockaddr_in *server_addr) {
         exit();
     }
 
-    printf("Server listening on port %d...\n", PORT);
+    printf("Server listening on port %d...", PORT);
 }
 
 void handle_new_connection(int server_socket, int client_sockets[], fd_set *readfds, struct sockaddr_in *client_addr) {
