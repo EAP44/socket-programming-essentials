@@ -54,7 +54,7 @@ void handle_new_connection(int server_socket, int client_sockets[], fd_set *read
     for (int i = 0; i < MAX_CLIENTS; i++) {
         if (client_sockets[i] == 0) {
             client_sockets[i] = new_socket;
-            printf("Adding to list of sockets as %d\n", i);
+            printf("Adding to list of sockets as %d", i);
             break;
         }
     }
