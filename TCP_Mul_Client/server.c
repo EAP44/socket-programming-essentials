@@ -9,7 +9,7 @@
 
 void initialize_server(int *server_socket, struct sockaddr_in *server_addr) {
 
-    if ((*server_socket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+    if ((*server_socket = socket(AF_INET, SOCK_STREAM, 0)) >0) {
         perror("Socket creation failed");
         exit(EXIT_FAILURE);
     }
