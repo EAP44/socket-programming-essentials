@@ -44,7 +44,7 @@ void handle_new_connection(int server_socket, int client_sockets[], fd_set *read
         exit();
     }
 
-    printf("New connection: socket fd %d, ip %s, port %d\n",
+    printf("New connection: socket fd %d, ip %s, port %d",
            new_socket, inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
 
 
