@@ -49,7 +49,7 @@ void handle_new_connection(int server_socket, int client_sockets[], fd_set *read
 
 
     send(new_socket, WELCOME_MESSAGE, strlen(WELCOME_MESSAGE), 0);
-    printf("Welcome message sent to client.\n");
+    printf("Welcome message sent to client.");
 
     for (int i = 0; i < MAX_CLIENTS; i++) {
         if (client_sockets[i] == 0) {
