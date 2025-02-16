@@ -70,7 +70,7 @@ void handle_client_activity(int client_sockets[], fd_set *readfds) {
 
             int valread = read(sd, buffer, BUFFER_SIZE);
             if (valread == 0) {
-                printf("Client disconnected: socket fd %d\n", sd);
+                printf("Client disconnected: socket fd %d", sd);
                 close(sd);
                 client_sockets[i] = 0;
             } else {
