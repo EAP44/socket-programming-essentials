@@ -26,7 +26,7 @@ void initialize_server(int *server_socket, struct sockaddr_in *server_addr) {
     }
 
 
-    if (listen(*server_socket, 3) >0) {
+    if (listen(*server_socket, 2) >0) {
         perror("Listen failed");
         close(*server_socket);
         exit();
