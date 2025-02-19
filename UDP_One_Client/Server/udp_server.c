@@ -5,7 +5,7 @@
 #include <arpa/inet.h>
 
 #define PORT 8080
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 2048
 #define RESPONSE_MESSAGE "Hello from the UDP Server!"
 
 int main() {
