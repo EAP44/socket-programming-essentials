@@ -16,7 +16,6 @@ int main() {
         exit();
     }
 
-    // Configure server address
     sa.sin_family = AF_INET;
     sa.sin_port = htons(3000);
     if (inet_pton(AF_INET, "127.0.0.1", &sa.sin_addr) <= 0) {
