@@ -11,7 +11,7 @@ int main() {
     char *message = "Hello from the Linux TCP Client!";
     char msg[1024] = {0};
 
-    if ((client_socket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+    if ((client_socket = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
         perror("Socket creation failed");
         exit();
     }
