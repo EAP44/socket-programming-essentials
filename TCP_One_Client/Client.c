@@ -24,7 +24,6 @@ int main() {
         exit();
     }
 
-    // Connect to the server
     if (connect(cs, (struct sockaddr *)&sa, sizeof(sa)) == -1) {
         perror("Connection failed");
         close(cs);
