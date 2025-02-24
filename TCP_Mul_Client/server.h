@@ -1,7 +1,7 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#define PORT 8800
+#define PORT 8888
 #define BUFFER_SIZE 2048
 #define MAX_CLIENTS 30
 #define WELCOME_MESSAGE "Welcome to the T-C-P Server!"
