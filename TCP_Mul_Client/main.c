@@ -30,7 +30,6 @@ int main() {
             continue;
         }
 
-        // Handle new connections
         if (FD_ISSET(server_socket, &readfds)) {
             handle_new_connection(server_socket, client_sockets, &readfds, &client_addr);
         }
