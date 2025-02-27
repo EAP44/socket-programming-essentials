@@ -14,7 +14,6 @@ int main() {
     initialize_server(&server_socket, &server_addr);
 
     while (1) {
-        // Clear and set the socket descriptor set
         FD_ZERO(&readfds);
         FD_SET(server_socket, &readfds);
         max_sd = server_socket;
