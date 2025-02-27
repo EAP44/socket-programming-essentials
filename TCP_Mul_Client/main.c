@@ -18,7 +18,6 @@ int main() {
         FD_SET(server_socket, &readfds);
         max_sd = server_socket;
 
-        // Add client sockets to the set
         for (int i = 0; i < MAX_CLIENTS; i++) {
             sd = client_sockets[i];
             if (sd > 0) FD_SET(sd, &readfds);
