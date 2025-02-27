@@ -34,7 +34,6 @@ int main() {
             handle_new_connection(server_socket, client_sockets, &readfds, &client_addr);
         }
 
-        // Handle client activity
         handle_client_activity(client_sockets, &readfds);
     }
 
