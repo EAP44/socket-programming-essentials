@@ -24,7 +24,6 @@ int main() {
             if (sd > max_sd) max_sd = sd;
         }
 
-        // Wait for activity
         activity = select(max_sd + 1, &readfds, NULL, NULL, NULL);
         if (activity < 0) {
             perror("Select error");
