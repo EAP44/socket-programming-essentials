@@ -44,7 +44,6 @@ int main() {
     }
     printf("Server: %s\n", buffer);
 
-    // Close the socket
     close(client_socket);
 
     return 0;
