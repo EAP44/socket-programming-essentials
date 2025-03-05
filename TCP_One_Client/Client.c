@@ -37,7 +37,6 @@ int main() {
     }
     printf("Message sent to server.\n");
 
-    // Receive the server's response
     if (recv(client_socket, buffer, BUFFER_SIZE, 0) == -1) {
         perror("Receive failed");
         close(client_socket);
