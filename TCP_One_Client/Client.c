@@ -30,7 +30,6 @@ int main() {
         exit();
     }
 
-    // Send a message to the server
     if (send(client_socket, message, strlen(message), 0) == -1) {
         perror("Send failed");
         close(client_socket);
