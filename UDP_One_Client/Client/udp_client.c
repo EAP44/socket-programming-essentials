@@ -28,8 +28,6 @@ int main() {
         close(client_socket);
         exit(EXIT_FAILURE);
     }
-
-    // Send message to server
     sendto(client_socket, CLIENT_MESSAGE, strlen(CLIENT_MESSAGE), 0, (struct sockaddr *)&server_addr, addr_len);
     printf("Message sent to server.\n");
 
