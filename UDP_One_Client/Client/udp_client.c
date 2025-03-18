@@ -31,7 +31,6 @@ int main() {
     sendto(client_socket, CLIENT_MESSAGE, strlen(CLIENT_MESSAGE), 0, (struct sockaddr *)&server_addr, addr_len);
     printf("Message sent to server.\n");
 
-    // Receive response from server
     int n = recvfrom(client_socket, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&server_addr, &addr_len);
     if (n < 0) {
         perror("Receive failed");
