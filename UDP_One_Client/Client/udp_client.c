@@ -35,7 +35,7 @@ int main() {
     if (n < 0) {
         perror("Receive failed");
     } else {
-        buffer[n] = '\0'; // Null-terminate the received data
+        buffer[n] = '\0'; 
         printf("Server: %s\n", buffer);
     }
 
