@@ -15,7 +15,6 @@ int main() {
     struct sockaddr_in server_addr;
     socklen_t addr_len = sizeof(server_addr);
 
-    // Create the socket
     if ((client_socket = socket(AF_INET, SOCK_DGRAM, 0)) == -1) {
         perror("Socket creation failed");
         exit(EXIT_FAILURE);
