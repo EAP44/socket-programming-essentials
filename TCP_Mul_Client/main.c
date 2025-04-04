@@ -9,7 +9,7 @@ int main() {
     int server_socket, max_sd, activity, sd;
     struct sockaddr_in server_addr, client_addr;
     int client_sockets[MAX_CLIENTS] = {0};
-    // fd_set readfds;
+    fd_set readfds;
 
     initialize_server(&server_socket, &server_addr);
 
