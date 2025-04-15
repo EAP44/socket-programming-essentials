@@ -9,7 +9,7 @@ int main() {
     int cs;
     struct sockaddr_in sa;
     char *message = "Hello from the Linux TCP Client!";
-    char msg[1024] = {0};
+    char msg[2048] = {0};
 
     if ((client_socket = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
         perror("Socket creation failed");
