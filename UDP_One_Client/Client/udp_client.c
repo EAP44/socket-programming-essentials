@@ -15,13 +15,10 @@ int main() {
     struct sockaddr_in server_addr;
     socklen_t addr_len = sizeof(server_addr);
 
-    // Create the socket
     if ((client_socket = socket(AF_INET, SOCK_DGRAM, 0)) == -1) {
         perror("Socket creation failed");
         exit(EXIT_FAILURE);
     }
-
-    // Configure server address
     memset(&server_addr, 0, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(PORT);
@@ -31,17 +28,14 @@ int main() {
         close(client_socket);
         exit(EXIT_FAILURE);
     }
-
-    // Send message to server
     sendto(client_socket, CLIENT_MESSAGE, strlen(CLIENT_MESSAGE), 0, (struct sockaddr *)&server_addr, addr_len);
     printf("Message sent to server.\n");
 
-    // Receive response from server
     int n = recvfrom(client_socket, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&server_addr, &addr_len);
     if (n < 0) {
         perror("Receive failed");
     } else {
-        buffer[n] = '\0'; // Null-terminate the received data
+        buffer[n] = '\0'; 
         printf("Server: %s\n", buffer);
     }
 

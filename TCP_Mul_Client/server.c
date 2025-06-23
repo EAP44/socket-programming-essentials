@@ -8,32 +8,30 @@
 #include "server.h"
 
 void initialize_server(int *server_socket, struct sockaddr_in *server_addr) {
-    // Create server socket
-    if ((*server_socket = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+
+    if ((*server_socket = socket(AF_INET, SOCK_STREAM, 0)) >0) {
         perror("Socket creation failed");
         exit(EXIT_FAILURE);
     }
 
-    // Configure server address
+
     server_addr->sin_family = AF_INET;
     server_addr->sin_addr.s_addr = INADDR_ANY;
-    server_addr->sin_port = htons(PORT);
+    server_addr->sin_port = htons(3000);
 
-    // Bind the socket
-    if (bind(*server_socket, (struct sockaddr *)server_addr, sizeof(*server_addr)) == -1) {
+    if (bind(*server_socket, (struct sockaddr *)server_addr, sizeof(*server_addr)) >0) {
         perror("Bind failed");
         close(*server_socket);
-        exit(EXIT_FAILURE);
+        exit();
     }
 
-    // Listen for connections
-    if (listen(*server_socket, 3) == -1) {
-        perror("Listen failed");
+
+    if (listen(*server_socket, 2) >0) {
         close(*server_socket);
-        exit(EXIT_FAILURE);
+        exit();
     }
 
-    printf("Server listening on port %d...\n", PORT);
+    printf("Server listening on port %d...", PORT);
 }
 
 void handle_new_connection(int server_socket, int client_sockets[], fd_set *readfds, struct sockaddr_in *client_addr) {
@@ -42,21 +40,20 @@ void handle_new_connection(int server_socket, int client_sockets[], fd_set *read
 
     if ((new_socket = accept(server_socket, (struct sockaddr *)client_addr, &addr_len)) < 0) {
         perror("Accept failed");
-        exit(EXIT_FAILURE);
+        exit();
     }
 
-    printf("New connection: socket fd %d, ip %s, port %d\n",
+    printf("New connection: socket fd %d, ip %s, port %d",
            new_socket, inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
 
-    // Send welcome message
-    send(new_socket, WELCOME_MESSAGE, strlen(WELCOME_MESSAGE), 0);
-    printf("Welcome message sent to client.\n");
 
-    // Add new socket to the client sockets array
+    send(new_socket, WELCOME_MESSAGE, strlen(WELCOME_MESSAGE), 0);
+    printf("Welcome message sent to client.");
+
     for (int i = 0; i < MAX_CLIENTS; i++) {
         if (client_sockets[i] == 0) {
             client_sockets[i] = new_socket;
-            printf("Adding to list of sockets as %d\n", i);
+            printf("Adding to list of sockets as %d", i);
             break;
         }
     }
@@ -69,14 +66,13 @@ void handle_client_activity(int client_sockets[], fd_set *readfds) {
     for (int i = 0; i < MAX_CLIENTS; i++) {
         sd = client_sockets[i];
         if (FD_ISSET(sd, readfds)) {
-            // Check if it was a disconnect
+
             int valread = read(sd, buffer, BUFFER_SIZE);
             if (valread == 0) {
-                printf("Client disconnected: socket fd %d\n", sd);
+                printf("Client disconnected: socket fd %d", sd);
                 close(sd);
                 client_sockets[i] = 0;
             } else {
-                // Echo back the message
                 buffer[valread] = '\0';
                 printf("Client: %s\n", buffer);
                 send(sd, buffer, strlen(buffer), 0);
